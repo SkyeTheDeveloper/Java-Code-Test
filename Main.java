@@ -12,25 +12,26 @@ public class Main {
     
     public static void mainMenu() {
         menuOptions = new String[] { "Start Game", "Settings", "Credits", "Exit Game" };
-        Scanner input = new Scanner(System.in);
-        while (menuActive) {
-            displayMenu();
-            char key = input.next().charAt(0);
-            if (key == 'w') {
-                menuIndex--;
-                if (menuIndex < 0) {
-                    menuIndex = 0;
-                }
-            } else if (key == 's') {
-                menuIndex++;
-                if (menuIndex > 3) {
-                    menuIndex = 3;
-                }
-            } else if (key == 'e') {
-                menuActive = false;
-                handleInput(menuIndex);
-            }
-        }
+		try (Scanner input = new Scanner(System.in)) {
+			while (menuActive) {
+			    displayMenu();
+			    char key = input.next().charAt(0);
+			    if (key == 'w') {
+			        menuIndex--;
+			        if (menuIndex < 0) {
+			            menuIndex = 0;
+			        }
+			    } else if (key == 's') {
+			        menuIndex++;
+			        if (menuIndex > 3) {
+			            menuIndex = 3;
+			        }
+			    } else if (key == 'e') {
+			        menuActive = false;
+			        handleInput(menuIndex);
+			    }
+			}
+		}
     }
     
     static void displayMenu() {
